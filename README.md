@@ -1,5 +1,7 @@
 # TeachingReferencePlatform
 
+[![CodeQL](https://github.com/ayachensiyuan/FD_TeachingPlatform/actions/workflows/codeQL.yml/badge.svg)](https://github.com/ayachensiyuan/FD_TeachingPlatform/actions/workflows/codeQL.yml)
+
 复旦大学继续教育学院 教学参考平台
 
 ## Getting Started
