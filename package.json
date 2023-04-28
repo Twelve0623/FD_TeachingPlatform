@@ -1,0 +1,22 @@
+{
+  "name": "teachingreferenceplatform",
+  "version": "0.1.0",
+  "author": "FuDan University",
+  "scripts": {
+    "setup": "npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayachensiyuan/TeachingReferencePlatform.git"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ayachensiyuan/TeachingReferencePlatform/issues"
+  },
+  "homepage": "https://github.com/ayachensiyuan/TeachingReferencePlatform#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1"
+  }
+}
