@@ -1,4 +1,4 @@
-# TeachingReferencePlatform
+# FD_TeachingPlatform
 
 [![CodeQL](https://github.com/ayachensiyuan/FD_TeachingPlatform/actions/workflows/codeQL.yml/badge.svg)](https://github.com/ayachensiyuan/FD_TeachingPlatform/actions/workflows/codeQL.yml)
 
