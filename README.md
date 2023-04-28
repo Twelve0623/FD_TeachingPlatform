@@ -10,7 +10,9 @@
 
 ### Setup
 
-- (**Required**) Run `npm install`
+- (**Required**) Run `npm run setup`
+
+- (**Dev frontend**) Run `npm run frontend:dev`
 
 ## Development
 

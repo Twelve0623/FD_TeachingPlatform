@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "author": "FuDan University",
   "scripts": {
-    "setup": "npm install"
+    "setup": "npm install && npm run build",
+    "build": "lerna run build",
+    "frontend:dev": "lerna run frontend:dev"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   "homepage": "https://github.com/ayachensiyuan/TeachingReferencePlatform#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",
-    "@commitlint/config-conventional": "^17.6.1"
+    "@commitlint/config-conventional": "^17.6.1",
+    "lerna": "^6.6.1"
   }
 }

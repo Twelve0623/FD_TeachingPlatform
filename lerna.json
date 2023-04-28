@@ -1,0 +1,16 @@
+{
+    "version": "independent",
+    "packages": [
+      "packages/frontend"
+    ],
+    "command": {
+      "version": {
+        "message": "build(release): publish detail",
+        "allowBranch": ["main"]
+      }
+    },
+    "publishConfig": {
+      "registry": "https://registry.npmjs.org/"
+    }
+  }
+  
