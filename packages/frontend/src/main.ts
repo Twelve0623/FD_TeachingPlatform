@@ -1,5 +1,10 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
-
-createApp(App).mount('#app')
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
+import * as echarts from "echarts";
+const app = createApp(App);
+app.config.globalProperties.$echarts = echarts;
+app.use(ElementPlus).use(store).use(router).mount("#app");

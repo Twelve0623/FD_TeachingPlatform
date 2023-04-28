@@ -4,8 +4,10 @@
   "author": "FuDan University",
   "scripts": {
     "setup": "npm install && npm run build",
+    "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "frontend:dev": "lerna run frontend:dev"
+    "frontend:dev": "lerna run frontend:dev",
+    "postinstall": "npm run bootstrap --hoist"
   },
   "repository": {
     "type": "git",
