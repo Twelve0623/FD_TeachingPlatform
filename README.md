@@ -18,3 +18,4 @@
 
 - Please add your github username to the [CODEOWNERS](.github/CODEOWNERS) file if you want to be a code owner of this project folder.
 - Please add your email to the [collaborators](collaborators.md) file.
+- Please fill in your [job assignment](job_assignment.md) 
