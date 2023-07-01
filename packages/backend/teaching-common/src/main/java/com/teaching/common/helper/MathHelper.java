@@ -31,6 +31,13 @@ public final class MathHelper {
         return null == bool ? Boolean.FALSE : bool;
     }
 
+    public static long toLong(final String num, long defaultVal) {
+        try{
+            return StringHelper.isNumeric(num) ? Long.parseLong(num) : defaultVal;
+        } catch (Exception e){
+            return defaultVal;
+        }
+    }
 
 
 
