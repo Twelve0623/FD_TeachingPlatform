@@ -133,3 +133,5 @@ dist
 .idea
 **/target/
 packages/backend/**/*.iml
+
+.DS_Store
