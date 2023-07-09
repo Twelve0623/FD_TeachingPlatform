@@ -1,10 +1,9 @@
-name: CD
+name: CI
 on: push
 
 jobs:
   deploy_to_production:
     runs-on: ubuntu-latest
-    name: deploy to production with artifact
     steps:
       - name: Checkout Github Action
         uses: actions/checkout@v3
@@ -20,3 +19,16 @@ jobs:
         working-directory: ./packages/backend
         run: |
           mvn clean package
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: platform-service
+          path: ./packages/backend/platform-service/target/
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: teaching-common
+          path: ./packages/backend/teaching-common/target/
+
