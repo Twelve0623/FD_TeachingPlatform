@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.teaching</groupId>
@@ -53,7 +53,8 @@
             <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>${knife4j.version}</version>
         </dependency>
-        <!--javax servlet-->
+        <!--javax
+        servlet-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -65,6 +66,7 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
         </dependency>
+
         <!--springframework-->
         <dependency>
             <scope>provided</scope>
@@ -96,7 +98,8 @@
             <optional>true</optional>
         </dependency>
 
-        <!--json xml-->
+        <!--json
+        xml-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -114,7 +117,9 @@
             <artifactId>cloning</artifactId>
             <version>${cloning.verson}</version>
         </dependency>
-        <!--guava commons-->
+
+        <!--guava
+        commons-->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -131,7 +136,8 @@
             <version>${commons-pool2.version}</version>
         </dependency>
 
-        <!--email http ftp-->
+        <!--email
+        http ftp-->
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
@@ -143,7 +149,8 @@
             <version>${okhttp.version}</version>
         </dependency>
 
-        <!--javax servlet-->
+        <!--javax
+        servlet-->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -164,12 +171,21 @@
             </exclusions>
         </dependency>
 
-        <!--mybatis plus-->
+        <!--mybatis
+        plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.3.0</version>
         </dependency>
+
+        <!-- JavaFX -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>16</version>
+        </dependency>
+
     </dependencies>
 
     <build>

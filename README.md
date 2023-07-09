@@ -7,6 +7,8 @@
 ### Prerequisites
 
 - node >= 16
+- java >= 11
+- maven >= 3.6.3
 
 ### Setup
 
