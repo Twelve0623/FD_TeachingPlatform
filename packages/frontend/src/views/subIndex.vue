@@ -7,26 +7,26 @@
             <el-radio-button :label="false">expand</el-radio-button>
             <el-radio-button :label="true">collapse</el-radio-button>
           </el-radio-group>
-          <el-menu
-            default-active="/home/dataStructure/stack_code"
-            class="el-menu-vertical-demo"
-            :collapse="isCollapse"
-            @open="handleOpen"
-            @close="handleClose"
-            router="true"
-          >
+          <el-menu default-active="/home/dataStructure/stack_code" class="el-menu-vertical-demo" :collapse="isCollapse"
+            @open="handleOpen" @close="handleClose" router="true">
             <el-sub-menu>
               <template #title index="stack">
-                <el-icon><location /></el-icon>
+                <el-icon>
+                  <location />
+                </el-icon>
                 <span>链表</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="/home/dataStructure/stack_code"
-                  >代码</el-menu-item
-                >
-                <el-menu-item index="/home/dataStructure/stack_chart"
-                  >绘图</el-menu-item
-                >
+                <el-menu-item index="/home/dataStructure/stack_code">代码</el-menu-item>
+                <el-menu-item index="/home/dataStructure/stack_chart">绘图</el-menu-item>
+
+                <el-menu-item index="/home/dataStructure/BasicArray">顺序表</el-menu-item>
+
+                <el-menu-item index="">单链表</el-menu-item>
+                <el-menu-item index="">双链表</el-menu-item>
+                <el-menu-item index="">循环链表</el-menu-item>
+                <el-menu-item index="">队列</el-menu-item>
+                <el-menu-item index="">栈</el-menu-item>
               </el-menu-item-group>
             </el-sub-menu>
           </el-menu>
@@ -58,6 +58,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 .sub-index {
   background: #fff;
 }
+
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;

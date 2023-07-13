@@ -25,6 +25,11 @@ const routes: Array<RouteRecordRaw> = [
             component: () =>
               import("@/components/dataStructure/chart/index.vue"),
           },
+          {
+            path: "/home/dataStructure/BasicArray",
+            component: () =>
+              import("@/components/dataStructure/BasicArray/index.vue"),
+          },
         ],
       },
     ],
