@@ -28,6 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @Description：
@@ -56,18 +57,20 @@ public class GlobalExceptionHandler implements ErrorController {
 
     @ExceptionHandler(Throwable.class)
     void errorThrowable(HttpServletResponse response, Throwable cause) throws IOException {
-        if(!(cause instanceof ServiceException)){
-            LOG.error(cause.getMessage(),cause);
-        }
         responseErrorWrite(response, cause);
     }
 
-    private static void responseErrorWrite(HttpServletResponse response, Throwable cause) throws IOException {
+    public static void responseErrorWrite(HttpServletResponse response, Throwable cause) throws IOException {
+        if(!(cause instanceof ServiceException)){
+            LOG.error(cause.getMessage(),cause);
+        }
         ResultReply<Void> resultReply = getErrorResult(cause);
         OutputStream os = null;
         try {
             RequestContextSession session = RequestContextThreadHolder.get().getSession();
-            session.responseBody = JSONObject.toJSONString(resultReply);
+            if(Objects.nonNull(session)){
+                session.responseBody = JSONObject.toJSONString(resultReply);
+            }
             response.setStatus(HttpServletResponse.SC_OK);
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             os = response.getOutputStream();
@@ -110,5 +113,4 @@ public class GlobalExceptionHandler implements ErrorController {
         }
         return resultReply;
     }
-
 }

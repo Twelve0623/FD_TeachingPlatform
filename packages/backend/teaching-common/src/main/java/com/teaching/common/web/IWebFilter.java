@@ -6,6 +6,7 @@ import com.google.common.collect.Sets;
 import com.teaching.common.core.IConstant;
 import com.teaching.common.core.RequestContextSession;
 import com.teaching.common.core.RequestContextThreadHolder;
+import com.teaching.common.exception.GlobalExceptionHandler;
 import com.teaching.common.helper.BytesHelper;
 import com.teaching.common.helper.StringHelper;
 import javafx.util.Pair;
@@ -112,7 +113,7 @@ public interface IWebFilter extends Filter {
         try {
             if(authentication(session,request,response)){
                 String type = StringHelper.defaultString(request.getContentType());
-                if(!type.startsWith(MediaType.MULTIPART_FORM_DATA_VALUE) || !type.startsWith(MediaType.APPLICATION_FORM_URLENCODED_VALUE) || !type.startsWith(MediaType.APPLICATION_XML_VALUE) || !type.startsWith(MediaType.TEXT_XML_VALUE)) {
+                if(!type.startsWith(MediaType.MULTIPART_FORM_DATA_VALUE)) {
                     Pair<? extends HttpServletRequest, String> bodyPair = bodyToString(request, type);
                     session.requestBody = bodyPair.getValue();
                     chain.doFilter(bodyPair.getKey(), response);
@@ -120,6 +121,8 @@ public interface IWebFilter extends Filter {
                     chain.doFilter(request, res);
                 }
             }
+        }catch (Throwable e){
+            GlobalExceptionHandler.responseErrorWrite(response, e);
         } finally {
             if(!StringHelper.isBlank(session.operate)){
                 LOG.info(JSONObject.toJSONString(session));

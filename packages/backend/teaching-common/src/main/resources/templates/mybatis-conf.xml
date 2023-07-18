@@ -8,8 +8,4 @@
         <!--下划线字段转驼峰-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
-
-    <plugins>
-        <plugin interceptor="com.teaching.common.ibatis.BeforeSQLInterceptor"></plugin>
-    </plugins>
 </configuration>
