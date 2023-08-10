@@ -1,5 +1,6 @@
 package com.teaching.common.helper;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -88,6 +89,22 @@ public final class StringHelper {
         }
         return EMPTY;
     }
+
+    public static <T> String join(String splitter, T ...src) {
+        if(CollectsHelper.isNullOrEmpty(src)) {
+            return EMPTY;
+        }
+        List<T> list = Lists.newArrayList();
+        for (T t: src) {
+            if (t instanceof Collection) {
+                list.addAll((Collection)t);
+            } else {
+                list.add(t);
+            }
+        }
+        return Joiner.on(splitter).join(list);
+    }
+
 
 
 }

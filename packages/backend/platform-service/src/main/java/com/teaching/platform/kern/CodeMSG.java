@@ -5,7 +5,9 @@ import com.teaching.common.core.ICodeMSG;
 
 /** 服务消息， code = port + sequence **/
 public enum CodeMSG implements ICodeMSG {
-    NetWorkTimeOut(1000000001, "请求超时"),
+    USER_PASS_ERROR(1000000001, "账号或密码不正确"),
+    USER_DEl(1000000002, "账号已删除"),
+    USER_STATUS_ERROR(1000000003, "账号已锁定"),
 
 
 

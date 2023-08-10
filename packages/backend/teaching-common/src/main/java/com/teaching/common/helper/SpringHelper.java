@@ -2,8 +2,14 @@ package com.teaching.common.helper;
 
 import org.springframework.aop.framework.AopContext;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.expression.MethodBasedEvaluationContext;
+import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.core.env.Environment;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
+import org.springframework.expression.spel.support.StandardEvaluationContext;
 
+import java.lang.reflect.Method;
 import java.util.function.Supplier;
 
 /**
@@ -104,5 +110,20 @@ public abstract class SpringHelper {
     @SuppressWarnings("unchecked")
     public static <T> T getAopProxy(T invoker) {
         return (T) AopContext.currentProxy();
+    }
+
+    static LocalVariableTableParameterNameDiscoverer discoverer = new LocalVariableTableParameterNameDiscoverer();
+    public static String parseEL(String spEL, Object root, Method method, Object[] args) {
+        ExpressionParser parser = new SpelExpressionParser();
+        StandardEvaluationContext context = new MethodBasedEvaluationContext(root, method, args, discoverer);
+        if (args.length > 0) {
+            String[] names = discoverer.getParameterNames(method);
+            if(!CollectsHelper.isNullOrEmpty(names)){
+                for (int i = 0; i < names.length; i++) {
+                    context.setVariable(names[i], args[i]);
+                }
+            }
+        }
+        return parser.parseExpression(spEL).getValue(context, String.class);
     }
 }

@@ -50,6 +50,9 @@ public class BytesHelper {
             output.write(buffer, 0, n);
         }
     }
+    public static String string(final byte[] source) {
+        return null == source ? StringHelper.EMPTY : new String(source, UTF8);
+    }
     public static String string(final InputStream input){
         return string(input, UTF8);
     }
