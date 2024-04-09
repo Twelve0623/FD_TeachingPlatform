@@ -2,7 +2,9 @@ package com.teaching.platform.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.teaching.platform.dto.request.LoginRequest;
+import com.teaching.platform.dto.request.UpdatePasswordRequest;
 import com.teaching.platform.dto.response.LoginResponse;
+import com.teaching.platform.dto.response.StudentResponse;
 import com.teaching.platform.entity.StudentInfo;
 
 /**
@@ -13,6 +15,10 @@ import com.teaching.platform.entity.StudentInfo;
  */
 public interface StudentInfoService extends IService<StudentInfo> {
 
-    LoginResponse login(LoginRequest request);
+    LoginResponse studentLogin(LoginRequest request);
+
+    Integer updatePassword(UpdatePasswordRequest request);
+
+    StudentResponse me();
 }
 

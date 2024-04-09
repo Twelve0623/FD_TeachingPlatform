@@ -4,7 +4,9 @@ import com.teaching.common.helper.RedisHelper;
 import com.teaching.common.lock.LockInterceptor;
 import com.teaching.common.web.IWebFilter;
 import com.teaching.common.web.WebMvcConfig;
+import com.teaching.platform.core.LoginCodeProperties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -72,5 +74,12 @@ public class ApplicationConfig {
     @Bean
     protected LockInterceptor lockInterceptor(@Autowired RedisHelper redisHelper) {
         return new LockInterceptor(redisHelper);
+    }
+
+
+    @Bean
+    @ConfigurationProperties(prefix = "login", ignoreUnknownFields = true)
+    public LoginCodeProperties loginCodeProperties() {
+        return new LoginCodeProperties();
     }
 }

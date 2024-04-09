@@ -17,10 +17,6 @@ public abstract class BaseEntity implements Serializable {
     protected BaseEntity() {
     }
 
-    /** 主键ID **/
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
-
     /**
      * 创建时间
      */
@@ -31,12 +27,20 @@ public abstract class BaseEntity implements Serializable {
      */
     public Date updatedTime;
 
-    public Long getId() {
-        return id;
+    public Date getCreatedTime() {
+        return createdTime;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public Date getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(Date updatedTime) {
+        this.updatedTime = updatedTime;
     }
 
     @Override

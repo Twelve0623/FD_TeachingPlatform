@@ -12,7 +12,6 @@ import javax.validation.constraints.NotBlank;
  * @Author：sacher
  * @Create：2023/8/9 22:15
  **/
-@ApiModel("学生登录请求值")
 public class LoginRequest implements IRequest {
 
     /**

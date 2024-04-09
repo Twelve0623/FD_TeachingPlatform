@@ -115,7 +115,7 @@ public interface IConstant {
 
                     || uriM.endsWith(".ttf")
                     || uriM.endsWith(".woff")
-                    || uriM.contains("swagger");
+                        || uriM.contains("swagger");
         }
         return false;
     }

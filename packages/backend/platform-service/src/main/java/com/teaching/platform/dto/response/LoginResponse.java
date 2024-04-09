@@ -8,7 +8,6 @@ import io.swagger.annotations.ApiModelProperty;
  * @Author：sacher
  * @Create：2023/8/9 22:15
  **/
-@ApiModel("学生登录响应值")
 public class LoginResponse {
 
     @ApiModelProperty("用户Token")

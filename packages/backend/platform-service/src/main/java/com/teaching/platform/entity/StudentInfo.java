@@ -2,6 +2,8 @@ package com.teaching.platform.entity;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.teaching.common.core.BaseEntity;
 import lombok.Data;
@@ -17,6 +19,10 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @TableName(value = "student_info", autoResultMap = true)
 public class StudentInfo extends BaseEntity {
+
+    /** 主键ID **/
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
     /**
      * 姓名
