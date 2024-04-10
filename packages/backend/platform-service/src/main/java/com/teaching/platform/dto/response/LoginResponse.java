@@ -1,7 +1,6 @@
 package com.teaching.platform.dto.response;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * @Description：
@@ -10,9 +9,9 @@ import io.swagger.annotations.ApiModelProperty;
  **/
 public class LoginResponse {
 
-    @ApiModelProperty("用户Token")
+    @Schema(title = "用户Token")
     public String token;
 
-    @ApiModelProperty("是否需要修改默认密码")
+    @Schema(title = "是否需要修改默认密码")
     public Boolean isDefault;
 }

@@ -1,22 +1,19 @@
 package com.teaching.platform.controller.api;
 
 
-import com.teaching.common.core.PageRequest;
-import com.teaching.common.core.Pagination;
 import com.teaching.common.core.ResultReply;
-import com.teaching.platform.dto.request.LoginRequest;
 import com.teaching.platform.dto.request.UpdatePasswordRequest;
-import com.teaching.platform.dto.response.CoursePageResponse;
-import com.teaching.platform.dto.response.LoginResponse;
 import com.teaching.platform.dto.response.StudentResponse;
-import com.teaching.platform.entity.CourseInfo;
 import com.teaching.platform.service.StudentInfoService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 
 /**
  * 学生信息表(StudentInfo)表控制层
@@ -26,7 +23,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/studentInfo")
-@Api(tags = {"学生信息类"})
+@Tag(name = "学生信息类")
 public class StudentInfoController {
     /**
      * 服务对象
@@ -34,14 +31,14 @@ public class StudentInfoController {
     @Resource
     private StudentInfoService studentInfoService;
 
-    @ApiOperation("修改密码")
+    @Operation(summary = "修改密码")
     @PostMapping(value = "/updatePassword")
     ResultReply<Integer> updatePassword(@RequestBody UpdatePasswordRequest request){
         return ResultReply.onOk(studentInfoService.updatePassword(request));
     }
 
-    @ApiOperation("个人信息")
-    @PostMapping(value = "/me")
+    @Operation(summary = "个人信息")
+    @GetMapping(value = "/me")
     ResultReply<StudentResponse> me(){
         return ResultReply.onOk(studentInfoService.me());
     }

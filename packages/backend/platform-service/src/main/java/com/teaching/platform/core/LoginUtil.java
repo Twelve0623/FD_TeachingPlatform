@@ -15,6 +15,6 @@ public class LoginUtil {
 
     public static Long getUserId(){
         String uid = RequestContextThreadHolder.get().getSession().uid;
-        return Long.parseLong(StringHelper.defaultIfBlank(uid,"0L"));
+        return Long.parseLong(StringHelper.defaultIfBlank(uid,"0"));
     }
 }

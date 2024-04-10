@@ -45,7 +45,7 @@ public class CourseChapterServiceImpl extends ServiceImpl<CourseChapterDao, Cour
     private List<CourseChapterResponse> extractedHasChild(List<CourseChapter> courseChapters) {
         List<CourseChapterResponse> courseChapterResponses = BeanHelper.castTo(courseChapters, CourseChapterResponse.class);
         for (CourseChapterResponse courseChapterResponse : courseChapterResponses) {
-            Integer count = this.baseMapper.selectCount(Wrappers.<CourseChapter>lambdaQuery().eq(CourseChapter::getParentId, courseChapterResponse.getParentId()));
+            Long count = this.baseMapper.selectCount(Wrappers.<CourseChapter>lambdaQuery().eq(CourseChapter::getParentId, courseChapterResponse.getParentId()));
             courseChapterResponse.setHasChild(MathHelper.nvl(count) > 0);
         }
         return courseChapterResponses;

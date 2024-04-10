@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.teaching.common.core.BaseEntity;
 import com.teaching.common.core.PageRequest;
 import com.teaching.common.core.Pagination;
 import com.teaching.common.exception.ServiceException;
@@ -29,11 +28,9 @@ import com.teaching.platform.entity.CourseUser;
 import com.teaching.platform.kern.CodeMSG;
 import com.teaching.platform.kern.IConstant;
 import com.teaching.platform.service.CourseInfoService;
-import org.apache.ibatis.annotations.Param;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import javax.inject.Inject;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -71,10 +68,10 @@ public class CourseInfoServiceImpl extends ServiceImpl<CourseInfoDao, CourseInfo
         for (CoursePageResponse coursePageResponse : coursePageResponses) {
             if(Objects.equals(coursePageResponse.getCourseStatus(), IConstant.CourseEnum.COURSE_STATUS_OPEN.getCode()) && Objects.equals(coursePageResponse.getCourseType(),IConstant.CourseEnum.COURSE_TYPE_CREATED.getCode())){
                 //查询章节数
-                Integer courseChapterCount = courseChapterDao.selectCount(Wrappers.<CourseChapter>lambdaQuery().eq(CourseChapter::getCourseId, coursePageResponse.getId()).eq(CourseChapter::getLevel, 0));
+                Long courseChapterCount = courseChapterDao.selectCount(Wrappers.<CourseChapter>lambdaQuery().eq(CourseChapter::getCourseId, coursePageResponse.getId()).eq(CourseChapter::getLevel, 0));
                 coursePageResponse.setCourseChapterNumber(MathHelper.nvl(courseChapterCount));
                 //查询已学习人数
-                Integer count = courseUserDao.selectCount(Wrappers.<CourseUser>lambdaQuery().eq(CourseUser::getCourseId, coursePageResponse.getId()));
+                Long count = courseUserDao.selectCount(Wrappers.<CourseUser>lambdaQuery().eq(CourseUser::getCourseId, coursePageResponse.getId()));
                 coursePageResponse.setLearnedNumber(MathHelper.nvl(count));
             }
         }
@@ -108,7 +105,7 @@ public class CourseInfoServiceImpl extends ServiceImpl<CourseInfoDao, CourseInfo
                                                                       .eq(CourseChapterDetail::getCourseId, id)
                                                                       .eq(CourseChapterDetail::getCourseChapterLevelParentId, courseUserDetailDTO.getId());
                 //需要完成章节数
-                Integer needChapterCount = courseChapterDetailDao.selectCount(chapterDetailWrapper);
+                Long needChapterCount = courseChapterDetailDao.selectCount(chapterDetailWrapper);
                 courseUserDetailDTO.setNeedChapterCount(MathHelper.nvl(needChapterCount));
                 LambdaQueryWrapper<CourseChapterUser> chapterUserWrapper = Wrappers.<CourseChapterUser>lambdaQuery()
                                                                                    .eq(CourseChapterUser::getStudentId,userId)
@@ -116,7 +113,7 @@ public class CourseInfoServiceImpl extends ServiceImpl<CourseInfoDao, CourseInfo
                                                                                    .eq(CourseChapterUser::getCourseChapterLevelParentId,courseUserDetailDTO.getId());
 
                 //已完成章节数
-                Integer finishedChapterCount = courseChapterUserDao.selectCount(chapterUserWrapper);
+                Long finishedChapterCount = courseChapterUserDao.selectCount(chapterUserWrapper);
                 courseUserDetailDTO.setFinishedChapterCount(MathHelper.nvl(finishedChapterCount));
             }
         }

@@ -1,7 +1,7 @@
 package com.teaching.platform.dto.response;
 
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * @Description：
@@ -9,8 +9,8 @@ import io.swagger.annotations.ApiModelProperty;
  * @Create：2020/10/27 6:03 下午
  **/
 public class CaptchaResponse  {
-    @ApiModelProperty("图片BASE64")
+    @Schema(title = "图片BASE64")
     public String img;
-    @ApiModelProperty("uuid")
+    @Schema(title = "uuid")
     public String uuid;
 }

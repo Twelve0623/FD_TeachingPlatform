@@ -8,11 +8,9 @@ import com.teaching.platform.core.LoginCodeProperties;
 import com.teaching.platform.dto.response.CaptchaResponse;
 import com.teaching.platform.kern.IConstant;
 import com.wf.captcha.base.Captcha;
-import org.springframework.data.redis.core.RedisOperations;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import javax.inject.Inject;
 
 /**
  * @Description：

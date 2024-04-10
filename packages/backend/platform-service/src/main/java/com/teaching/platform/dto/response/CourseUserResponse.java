@@ -1,9 +1,6 @@
 package com.teaching.platform.dto.response;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.serializer.ToStringSerializer;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.List;
 
@@ -14,15 +11,15 @@ import java.util.List;
  **/
 public class CourseUserResponse {
 
-    @ApiModelProperty("当前在线人数")
+    @Schema(title = "当前在线人数")
     public Long nowStudentCount;
 
-    @ApiModelProperty("登录次数")
+    @Schema(title = "登录次数")
     public Long learningCount;
 
-    @ApiModelProperty("累计学习时长")
+    @Schema(title = "累计学习时长")
     public Long learningDuration;
 
-    @ApiModelProperty("学习进度")
+    @Schema(title = "学习进度")
     public List<CourseUserDetailDTO> courseUserDetailList;
 }

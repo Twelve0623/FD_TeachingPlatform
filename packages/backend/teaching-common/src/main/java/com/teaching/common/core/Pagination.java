@@ -2,7 +2,7 @@ package com.teaching.common.core;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.google.common.collect.Lists;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.List;
 
@@ -14,25 +14,25 @@ public final class Pagination<T> {
      * 当前页
      **/
     @JSONField(ordinal = 0)
-    @ApiModelProperty("当前页")
+    @Schema(title = "当前页")
     private int pager;
     /**
      * 总页数
      **/
     @JSONField(ordinal = 1)
-    @ApiModelProperty("总页数")
+    @Schema(title = "总页数")
     private int pages;
     /**
      * 每页条数
      **/
     @JSONField(ordinal = 2)
-    @ApiModelProperty("每页条数")
+    @Schema(title = "每页条数")
     private int size;
     /**
      * 总条数
      **/
     @JSONField(ordinal = 3)
-    @ApiModelProperty("总条数")
+    @Schema(title = "总条数")
     private long total;
     /**
      * 过滤前多少条
@@ -42,7 +42,7 @@ public final class Pagination<T> {
      * 数据列表
      **/
     @JSONField(ordinal = 4)
-    @ApiModelProperty("数据列表")
+    @Schema(title = "数据列表")
     private List<T> list = Lists.newArrayList();
 
     @SuppressWarnings("unused")

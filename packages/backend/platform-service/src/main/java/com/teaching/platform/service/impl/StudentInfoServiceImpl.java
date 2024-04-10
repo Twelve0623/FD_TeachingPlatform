@@ -18,9 +18,9 @@ import com.teaching.platform.entity.StudentInfo;
 import com.teaching.platform.kern.CodeMSG;
 import com.teaching.platform.kern.IConstant;
 import com.teaching.platform.service.StudentInfoService;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.Objects;
 
 /**

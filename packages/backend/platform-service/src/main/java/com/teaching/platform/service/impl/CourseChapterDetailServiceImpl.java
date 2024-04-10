@@ -3,10 +3,8 @@ package com.teaching.platform.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mysql.cj.util.LogUtils;
 import com.teaching.common.exception.ServiceException;
 import com.teaching.common.helper.BeanHelper;
-import com.teaching.common.helper.MathHelper;
 import com.teaching.platform.core.LoginUtil;
 import com.teaching.platform.dao.CourseChapterDetailDao;
 import com.teaching.platform.dao.CourseChapterUserDao;
@@ -15,9 +13,9 @@ import com.teaching.platform.entity.CourseChapterDetail;
 import com.teaching.platform.entity.CourseChapterUser;
 import com.teaching.platform.kern.CodeMSG;
 import com.teaching.platform.service.CourseChapterDetailService;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.Objects;
 import java.util.Optional;
 

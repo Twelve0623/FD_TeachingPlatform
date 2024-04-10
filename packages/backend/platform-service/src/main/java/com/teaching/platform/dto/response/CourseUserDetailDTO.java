@@ -1,6 +1,6 @@
 package com.teaching.platform.dto.response;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -18,19 +18,19 @@ public class CourseUserDetailDTO {
     /**
      * 章节标题 例：绪论
      */
-    @ApiModelProperty("章节标题 例：绪论")
+    @Schema(title = "章节标题 例：绪论")
     private String chapterName;
     /**
      * 章节描述 例：第一章
      */
-    @ApiModelProperty("章节描述 例：第一章/1.1")
+    @Schema(title = "章节描述 例：第一章/1.1")
     private String chapterDesc;
 
-    @ApiModelProperty("需要完成章节数")
-    private Integer needChapterCount;
+    @Schema(title = "需要完成章节数")
+    private Long needChapterCount;
 
-    @ApiModelProperty("已完成章节数")
-    private Integer finishedChapterCount;
+    @Schema(title = "已完成章节数")
+    private Long finishedChapterCount;
 
 
 }

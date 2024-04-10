@@ -5,7 +5,7 @@ import com.teaching.common.core.IRequest;
 import com.teaching.common.core.RequestContextSession;
 import com.teaching.common.core.RequestContextThreadHolder;
 import com.teaching.common.helper.StringHelper;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -58,10 +58,10 @@ public class LogAspect {
 
     private void handleLog(ProceedingJoinPoint joinPoint,Object proceed,Throwable e) {
         MethodSignature signature = (MethodSignature)joinPoint.getSignature();
-        ApiOperation apiOperation = signature.getMethod().getAnnotation(ApiOperation.class);
+        Operation apiOperation = signature.getMethod().getAnnotation(Operation.class);
         RequestContextSession session = RequestContextThreadHolder.get().getSession();
         if(Objects.nonNull(session)){
-            session.operate = Objects.nonNull(apiOperation) ? apiOperation.value() : StringHelper.EMPTY;
+            session.operate = Objects.nonNull(apiOperation) ? apiOperation.summary() : StringHelper.EMPTY;
             session.responseBody = JSONObject.toJSONString(proceed);
         }
     }
