@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <div class="top">
-      <img src="../assets/logo.png" alt="" />
+      <img src="../assets/favicon.ico" alt="" />
       <span>复旦继续教育学院智慧云课堂平台</span>
     </div>
     <div class="classList">
