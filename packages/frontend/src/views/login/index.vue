@@ -69,14 +69,20 @@ const submit = () => {
   // 表单验证
   ruleFormRef.value?.validate(async (valid: any) => {
     if (valid) {
-      console.log(ruleForm);
       loading.value = true;
       try {
+        const param = {
+          studentNo: ruleForm.studentNo,
+          password: md5(ruleForm.password),
+          code: '',
+          uuid: ''
+        };
         // 执行登录接口
-        const { val } = await loginApi({ username: ruleForm.userName, password: md5(ruleForm.password) });
-        userStore.setToken(val.access_token);
+        const res = await loginApi(param);
+        console.log(res, 'res------------------------');
+        userStore.setToken(res.val.token);
         keepAliveStore.setKeepAliveName();
-
+        loading.value = false;
         // 跳转到首页
         router.push(HOME_URL);
         ElNotification({
@@ -85,7 +91,8 @@ const submit = () => {
           type: 'success',
           duration: 3000
         });
-      } finally {
+      } catch (error) {
+        console.log('error submit!', error);
         loading.value = false;
       }
     } else {
