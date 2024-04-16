@@ -5,39 +5,24 @@ export interface ReqParams {
 
 // 请求响应参数（不包含data）
 export interface Result {
-  success: string;
+  code: string;
   msg: string;
   requestUUID: string;
   responseTime: string;
   ret: string;
 }
 
-export interface ResultPageInfo {
-  count: number;
-  pageIndex: number;
-  pageSize: number;
-  totalPage: number;
-}
-
-// 请求响应参数（包含data）
-export interface ResultData<T = any, U = ResultPageInfo> extends Result {
-  shops?: any;
-  pageInfo?: U;
-  val: T;
-}
-
-// 分页响应参数
-export interface ResPage<T> {
-  list: T[];
-  pageNum: number;
-  pageSize: number;
+// 分页请求参数
+export interface ReqPage {
+  pager: number;
+  size: number;
+  pages: number;
   total: number;
 }
 
-// 分页请求参数
-export interface ReqPage {
-  pageNum: number;
-  pageSize: number;
+// 请求响应参数（包含data）
+export interface ResultData<T = any> extends Result {
+  data: T | any;
 }
 
 // 文件上传模块
@@ -51,7 +36,7 @@ export namespace Upload {
 export namespace Login {
   export interface ReqLoginForm {
     studentNo: string;
-    password: string;
+    password: string | false;
     code: string;
     uuid: string;
   }

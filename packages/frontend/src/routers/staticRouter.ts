@@ -27,13 +27,6 @@ export const staticRouter: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/layout',
-    name: 'layout',
-    component: () => import('@/layouts/index.vue'),
-    redirect: HOME_URL,
-    children: []
-  },
-  {
     path: '/home',
     name: 'home',
     component: () => import('@/views/home/index.vue'),

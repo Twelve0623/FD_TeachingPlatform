@@ -17,7 +17,7 @@ function sortRoute(a: Menu.MenuOptions, b: Menu.MenuOptions) {
 routeList.sort(sortRoute);
 
 export const useAuthStore = defineStore({
-  id: 'report-auth',
+  id: 'system-auth',
   state: (): AuthState => ({
     // 权限列表
     permissionList: [],

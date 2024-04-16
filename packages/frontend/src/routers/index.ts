@@ -53,7 +53,7 @@ router.beforeEach(async (to, from, next) => {
       if (to.path.toLocaleLowerCase() == LOGIN_URL) {
         return next(HOME_URL);
       } else {
-        return next(from.fullPath);
+        return next();
       }
     } else {
       throw '未登录';

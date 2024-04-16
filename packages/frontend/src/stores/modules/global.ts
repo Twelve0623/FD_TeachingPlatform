@@ -4,7 +4,7 @@ import piniaPersistConfig from '@/config/piniaPersist';
 import { ObjToKeyValArray } from '@/typings/global';
 
 export const useGlobalStore = defineStore({
-  id: 'report-global',
+  id: 'system-global',
   // 修改默认值之后，需清除 localStorage 数据
   state: (): GlobalState => ({
     // 当前系统语言
