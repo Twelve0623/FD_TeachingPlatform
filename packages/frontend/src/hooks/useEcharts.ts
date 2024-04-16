@@ -1,11 +1,7 @@
 import type { EChartsOption } from 'echarts';
 import echarts from '@/utils/echarts';
-import { useGlobalStore } from '@/stores/modules/global';
 
 export function useEcharts(elRef: Ref<HTMLDivElement> | null) {
-  const globalStore = useGlobalStore();
-  const { isCollapse } = storeToRefs(globalStore);
-
   let chartInstance: echarts.ECharts | null = null;
   let removeResizeFn: Fn = () => {};
 
@@ -76,11 +72,6 @@ export function useEcharts(elRef: Ref<HTMLDivElement> | null) {
       resizeStatus.value = false;
       resize();
     }
-  });
-
-  // 菜单折叠时 触发chart resize
-  watch(isCollapse, () => {
-    useTimeoutFn(resize, 300);
   });
 
   return { echarts, getInstance, setOptions, resize };

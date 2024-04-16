@@ -7,11 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    IconEpAvatar: typeof import('~icons/ep/avatar')['default']
-    IconFormkitArrowup: typeof import('~icons/formkit/arrowup')['default']
-    IconFormkitHelp: typeof import('~icons/formkit/help')['default']
-    IconFormkitRight: typeof import('~icons/formkit/right')['default']
-    IconHealthiconsChartLine: typeof import('~icons/healthicons/chart-line')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

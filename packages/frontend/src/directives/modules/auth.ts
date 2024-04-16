@@ -2,7 +2,6 @@
  * v-auth
  * 按钮权限指令
  */
-import { useAuthStore } from '@/stores/modules/auth';
 import type { Directive, DirectiveBinding } from 'vue';
 
 interface ElType extends HTMLElement {
@@ -17,13 +16,6 @@ interface ValueType {
 const auth: Directive = {
   mounted(el: ElType, binding: DirectiveBinding<ValueType>) {
     const { value } = binding;
-    const authStore: ReturnType<typeof useAuthStore> = useAuthStore();
-    el.__disabled__ = !authStore.permissionListGet.includes(value.code);
-
-    if (el.__disabled__) {
-      el.classList.add('is-disabled');
-      return;
-    }
 
     el.className.includes('is-disabled') && el.classList.remove('is-disabled');
 

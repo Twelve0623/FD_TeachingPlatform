@@ -7,7 +7,6 @@
           <img class="logo-img" src="@/assets/images/favicon.ico" alt="logo" />
           <span class="logo-text">复旦学习平台</span>
         </div>
-        <ToolBarLeft />
       </div>
       <div class="header-ri">
         <ToolBarRight />
@@ -26,7 +25,6 @@
 </template>
 
 <script setup lang="ts" name="layoutClassic">
-import ToolBarLeft from '@/layouts/components/Header/ToolBarLeft.vue';
 import ToolBarRight from '@/layouts/components/Header/ToolBarRight.vue';
 import { storeToRefs } from 'pinia';
 import { useKeepAliveStore } from '@/stores/modules/keepAlive';
