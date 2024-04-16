@@ -4,7 +4,10 @@ import com.teaching.common.helper.RedisHelper;
 import com.teaching.common.lock.LockInterceptor;
 import com.teaching.common.web.IWebFilter;
 import com.teaching.common.web.WebMvcConfig;
+import com.teaching.platform.core.LoginCodeProperties;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -13,7 +16,6 @@ import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSeriali
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-import javax.inject.Inject;
 
 /**
  * @Description：
@@ -24,18 +26,16 @@ import javax.inject.Inject;
 public class ApplicationConfig {
 
     @Configuration
-    public static class WebConfig extends WebMvcConfig{
+    public class WebConfig extends WebMvcConfig {
         @Bean
         protected IWebFilter configAuthFilter() {
             return new WebAuthFilter();
         }
     }
 
-    @Inject
-    private RedisTemplate redisTemplate;
-
     @Bean(name = "redisTemplate")
     public RedisTemplate getRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
         // 设置key和value的序列化规则
         redisTemplate.setKeySerializer(new StringRedisSerializer());
@@ -68,9 +68,16 @@ public class ApplicationConfig {
     public RedisHelper initRedisHelper() {
         return RedisHelper.INSTANCE();
     }
+//
+//    @Bean
+//    protected LockInterceptor lockInterceptor(@Autowired RedisHelper redisHelper) {
+//        return new LockInterceptor(redisHelper);
+//    }
+
 
     @Bean
-    protected LockInterceptor lockInterceptor(@Autowired RedisHelper redisHelper) {
-        return new LockInterceptor(redisHelper);
+    @ConfigurationProperties(prefix = "login", ignoreUnknownFields = true)
+    public LoginCodeProperties loginCodeProperties() {
+        return new LoginCodeProperties();
     }
 }

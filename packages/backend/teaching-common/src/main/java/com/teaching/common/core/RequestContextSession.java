@@ -3,8 +3,8 @@ package com.teaching.common.core;
 import com.teaching.common.helper.NetworkHelper;
 import com.teaching.common.helper.SnowIdHelper;
 import com.teaching.common.helper.StringHelper;
+import jakarta.servlet.http.HttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Description：

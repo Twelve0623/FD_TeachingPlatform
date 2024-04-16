@@ -1,10 +1,12 @@
 package com.teaching.platform.config;
 
 import com.teaching.common.core.RequestContextSession;
+import com.teaching.common.helper.JwtHelper;
+import com.teaching.common.helper.StringHelper;
 import com.teaching.common.web.IWebFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Description：
@@ -14,7 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 public class WebAuthFilter implements IWebFilter {
     @Override
     public boolean authentication(RequestContextSession session, HttpServletRequest request, HttpServletResponse response) {
-        session.uid = "测试";
+        if (!StringHelper.isBlank(session.signature)) {
+            //用户ID
+            session.uid = JwtHelper.getUid(session.signature.replaceAll("Bearer ",""));
+            //拓展字段 暂无
+//            session.ext =
+        }
         return true;
     }
 }

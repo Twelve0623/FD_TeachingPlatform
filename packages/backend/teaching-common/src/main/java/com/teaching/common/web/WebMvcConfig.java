@@ -2,15 +2,16 @@ package com.teaching.common.web;
 
 import com.google.common.collect.Lists;
 import com.teaching.common.helper.JvmOSHelper;
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.Filter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-import javax.servlet.DispatcherType;
-import javax.servlet.Filter;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -20,6 +21,10 @@ import java.util.List;
  * @Create：2023/5/5 16:31
  **/
 public class WebMvcConfig extends WebMvcConfigurationSupport {
+    @Override
+    public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+        resolvers.add(new GlobalExceptionHandler());
+    }
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {

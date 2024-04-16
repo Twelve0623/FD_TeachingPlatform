@@ -9,7 +9,7 @@ public enum RequestHeader implements StringEnum {
 
     DEVICE("X-Device", "应用信息"),
 
-    SIGNATURE("X-Signature", "权限签名数据"),
+    SIGNATURE("X-Authorization", "权限签名数据"),
     USER_AGENT("User-Agent", "User-Agent"),
 
     ;

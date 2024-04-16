@@ -1,7 +1,5 @@
 package com.teaching.common.initializ;
 
-import com.alibaba.fastjson.serializer.DoubleSerializer;
-import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.teaching.common.helper.SpringHelper;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -28,11 +26,5 @@ public class BootContextInitializer implements ApplicationContextInitializer<Con
         System.setProperty("spring.servlet.multipart.max-file-size", "100MB");
         System.setProperty("spring.servlet.multipart.max-request-size", "100MB");
 
-//        SerializeConfig.getGlobalInstance().put(Long.TYPE , ToStringSerializer.instance);
-//        SerializeConfig.getGlobalInstance().put(long.class , ToStringSerializer.instance);
-//        SerializeConfig.getGlobalInstance().put(Long.class , ToStringSerializer.instance);
-        SerializeConfig.getGlobalInstance().put(Double.TYPE, new DoubleSerializer("#.######"));
-        SerializeConfig.getGlobalInstance().put(double.class, new DoubleSerializer("#.######"));
-        SerializeConfig.getGlobalInstance().put(Double.class, new DoubleSerializer("#.######"));
     }
 }

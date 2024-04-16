@@ -4,6 +4,7 @@ package com.teaching.common.helper;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 /**
  * 分布式唯一 ID 生成器
@@ -20,6 +21,9 @@ public final class SnowIdHelper {
         return ID_WORKER.nextId();
     }
 
+    public static String uuid() {
+        return EncryptHelper.md5(UUID.randomUUID() + NetworkHelper.machineIp() + System.currentTimeMillis());
+    }
 
     private SnowIdHelper() {
     }
